@@ -31,6 +31,11 @@ public class ResultadoService {
 
     public void registrarResultado(Resultado resultado) {
 
+        // El front puede mandar idResultado (ej. 0, o un id viejo de un form reciclado):
+        // con GenerationType.IDENTITY, persist() exige id nulo o Hibernate lo trata
+        // como entidad "detached" y tira EJBTransactionRolledbackException.
+        resultado.setIdResultado(null);
+
         if (resultado.getPartido() == null || resultado.getPartido().getIdPartido() == null) {
             throw new IllegalArgumentException("Debe indicar el partido del resultado.");
         }

@@ -47,6 +47,10 @@ public class PartidoService {
     }
 
     public void crear(Partido partido) {
+        // El front puede mandar idPartido (ej. 0, o un id viejo de un form reciclado):
+        // con GenerationType.IDENTITY, persist() exige id nulo o Hibernate lo trata
+        // como entidad "detached" y tira EJBTransactionRolledbackException.
+        partido.setIdPartido(null);
         validar(partido);
         partidoRepository.crear(partido);
         auditoriaService.registrar("partido", partido.getIdPartido(), "CREAR", usuarioActual.getIdUsuarioOrNull());
