@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="jakarta.faces.facelets">
+
+    <ui:define name="contenido">
+
+        <div class="home-banner">
+
+            <h1>⚽ Bienvenido a UTN GolMundial 2026</h1>
+
+            <h:panelGroup rendered="#{loginBean.authenticated}">
+
+                <h2>Hola, #{loginBean.authenticatedUser.fullName}</h2>
+
+                <p>
+                    Usuario:
+                    <strong>#{loginBean.authenticatedUser.username}</strong>
+                </p>
+
+                <p class="mensaje-home">
+                    Vive la emoción del Mundial 2026.
+                    Realiza predicciones, consulta los partidos,
+                    sigue la clasificación y conviértete en el mejor jugador.
+                </p>
+
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{loginBean.guest}">
+
+                <h2>Modo Invitado</h2>
+
+                <p class="mensaje-home">
+                    Puedes consultar el calendario y la clasificación.
+                    Regístrate para comenzar a realizar predicciones.
+                </p>
+
+            </h:panelGroup>
+
+        </div>
+
+        <div class="dashboard">
+
+            <div class="modulo">
+                <div class="icono">📅</div>
+                <h3>Calendario</h3>
+                <p>Consulta todos los partidos del Mundial.</p>
+
+                <p:button
+                        value="Entrar"
+                        outcome="/calendar.xhtml"
+                        styleClass="btn-modulo"/>
+            </div>
+
+            <div class="modulo">
+                <div class="icono">📊</div>
+                <h3>Clasificación</h3>
+                <p>Observa la tabla de posiciones de cada grupo.</p>
+
+                <p:button
+                        value="Entrar"
+                        outcome="/standings.xhtml"
+                        styleClass="btn-modulo"/>
+            </div>
+
+            <div class="modulo">
+                <div class="icono">🎯</div>
+                <h3>Predicciones</h3>
+                <p>Realiza tus pronósticos para cada partido.</p>
+
+                <p:button
+                        value="Entrar"
+                        outcome="/predictions.xhtml"
+                        disabled="#{loginBean.guest}"
+                        styleClass="btn-modulo"/>
+            </div>
+
+            <div class="modulo">
+                <div class="icono">💰</div>
+                <h3>Mi Wallet</h3>
+                <p>Consulta el saldo de tus GolCoins.</p>
+
+                <p:button
+                        value="Entrar"
+                        outcome="/wallet.xhtml"
+                        disabled="#{loginBean.guest}"
+                        styleClass="btn-modulo"/>
+            </div>
+
+            <div class="modulo">
+                <div class="icono">🏆</div>
+                <h3>Ranking</h3>
+                <p>Descubre quién lidera la competencia.</p>
+
+                <p:button
+                        value="Entrar"
+                        outcome="/ranking.xhtml"
+                        styleClass="btn-modulo"/>
+            </div>
+
+            <div class="modulo salir-card">
+
+                <div class="icono">🚪</div>
+
+                <h3>Cerrar sesión</h3>
+
+                <p>Finaliza tu sesión de forma segura.</p>
+
+                <p:commandButton
+                        value="Salir"
+                        action="#{loginBean.logout}"
+                        styleClass="btn-salir"/>
+
+            </div>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

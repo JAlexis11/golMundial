@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets">
+
+    <ui:define name="contenido">
+
+        <h1 class="titulo-pagina">
+            💳 Mi Billetera
+        </h1>
+
+        <div class="wallet-card">
+
+            <div class="wallet-top">
+
+                <span class="wallet-logo">
+                    💳 UTN GolWallet
+                </span>
+
+                <span class="wallet-chip">
+                    🟨
+                </span>
+
+            </div>
+
+            <div class="wallet-balance">
+
+                <small>Saldo Disponible</small>
+
+                <h2>
+
+                    #{walletBean.wallet.saldo}
+
+                    <span>UTNGolCoin</span>
+
+                </h2>
+
+            </div>
+
+            <div class="wallet-info">
+
+                <div>
+
+                    <small>ID Usuario</small>
+
+                    <strong>
+
+                        #{walletBean.usuarioId}
+
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <small>Estado</small>
+
+                    <strong>
+
+                        Activa
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <br/>
+
+       <div class="historial-card">
+
+    <h2 class="titulo-historial">
+        📜 Historial de Movimientos
+    </h2>
+
+    <ui:repeat value="#{transaccionBean.transacciones}" var="t">
+
+        <div class="movimiento">
+
+            <div class="movimiento-icono">
+
+                <h:outputText value="🎁"
+                              rendered="#{t.tipo eq 'BIENVENIDA'}"/>
+
+                <h:outputText value="🎯"
+                              rendered="#{t.tipo eq 'PREDICCION'}"/>
+
+                <h:outputText value="🏆"
+                              rendered="#{t.tipo eq 'PREMIO'}"/>
+
+            </div>
+
+            <div class="movimiento-texto">
+
+                <strong>
+                    #{t.tipo}
+                </strong>
+
+                <h:panelGroup rendered="#{t.tipo eq 'PREDICCION'}">
+
+                    <p>
+                        Monto apostado: #{t.monto} UTNGolCoin
+                    </p>
+
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{t.tipo eq 'BIENVENIDA'}">
+
+                    <p>
+                        Bono recibido: #{t.monto} UTNGolCoin
+                    </p>
+
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{t.tipo eq 'PREMIO'}">
+
+                    <p>
+                        Premio recibido: #{t.monto} UTNGolCoin
+                    </p>
+
+                </h:panelGroup>
+
+                <p>
+
+                    Saldo disponible: #{t.saldoResultante} UTNGolCoin
+
+                </p>
+
+                <small>
+
+                    #{t.fecha}
+
+                </small>
+
+            </div>
+
+            <div class="movimiento-valor">
+
+                #{t.monto} UTNGolCoin
+
+            </div>
+
+        </div>
+
+    </ui:repeat>
+
+</div>
+
+    </ui:define>
+
+</ui:composition>

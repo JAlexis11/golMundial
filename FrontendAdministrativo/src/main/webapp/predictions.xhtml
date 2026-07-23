@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:f="jakarta.faces.core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="jakarta.faces.facelets">
+
+    <ui:define name="contenido">
+
+        <h1 class="titulo-pagina">
+            🎯 Predicciones
+        </h1>
+
+        <div class="prediccion-card">
+
+            <h2 class="prediccion-titulo">
+                Realiza tu Pronóstico
+            </h2>
+
+            <h:form>
+
+                <p:messages id="mensajes"/>
+
+                <div class="form-prediccion">
+
+                    <div class="campo">
+                        <label>ID del Partido</label>
+
+                        <p:inputNumber
+                            value="#{predictionBean.partidoId}"
+                            style="width:100%;" />
+                    </div>
+
+                    <div class="campo">
+
+                        <label>Resultado</label>
+
+                        <p:selectOneMenu
+                            value="#{predictionBean.pronostico}"
+                            style="width:100%;">
+
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" />
+                            <f:selectItem itemLabel="🏠 Local" itemValue="LOCAL" />
+                            <f:selectItem itemLabel="🤝 Empate" itemValue="EMPATE" />
+                            <f:selectItem itemLabel="✈ Visitante" itemValue="VISITANTE" />
+
+                        </p:selectOneMenu>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label>UTNGolCoin a apostar</label>
+
+                        <p:inputNumber
+                            value="#{predictionBean.monto}"
+                            decimalPlaces="2"
+                            style="width:100%;" />
+
+                    </div>
+
+                </div>
+
+                <div style="text-align:center; margin-top:25px;">
+
+                    <p:commandButton
+                            value="⚽ Realizar Predicción"
+                            action="#{predictionBean.apostar}"
+                            process="@form"
+                            update="@form historial"
+                            styleClass="btn-prediccion"/>
+
+                </div>
+
+            </h:form>
+
+        </div>
+
+        <div class="tabla-predicciones">
+
+            <h2>
+                📋 Mis Predicciones
+            </h2>
+
+            <h:form id="historial">
+
+                <p:dataTable
+                        value="#{predictionBean.misApuestas}"
+                        var="p"
+                        emptyMessage="No existen predicciones.">
+
+                    <p:column headerText="Partido">
+                        #{p.partidoId}
+                    </p:column>
+
+                    <p:column headerText="Pronóstico">
+                        #{p.pronostico}
+                    </p:column>
+
+                    <p:column headerText="Apuesta">
+                        #{p.monto} UTNGolCoin
+                    </p:column>
+
+                    <p:column headerText="Cuota">
+                        #{p.cuota}
+                    </p:column>
+
+                    <p:column headerText="Estado">
+
+                        <h:panelGroup rendered="#{p.estado eq 'GANADA'}">
+                            <span class="estado-ganada">
+                                GANADA
+                            </span>
+                        </h:panelGroup>
+
+                        <h:panelGroup rendered="#{p.estado eq 'PERDIDA'}">
+                            <span class="estado-perdida">
+                                PERDIDA
+                            </span>
+                        </h:panelGroup>
+
+                        <h:panelGroup rendered="#{p.estado eq 'PENDIENTE'}">
+                            <span class="estado-pendiente">
+                                PENDIENTE
+                            </span>
+                        </h:panelGroup>
+
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

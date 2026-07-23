@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:c="jakarta.tags.core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="jakarta.faces.facelets">
+
+    <ui:define name="contenido">
+
+        <h1 class="titulo-pagina">
+            📅 Calendario Mundial 2026
+        </h1>
+
+        <p:tabView styleClass="tabs-grupos">
+
+            <c:forEach items="#{matchCalendarBean.groupKeys}" var="grupo">
+
+                <p:tab title="Grupo #{grupo}">
+
+                    <div class="contenedor-partidos">
+
+                        <c:forEach items="#{matchCalendarBean.getMatchesByGroup(grupo)}" var="m">
+
+                            <div class="card-partido">
+
+                                <!-- ================= LOCAL ================= -->
+
+                                <div class="equipo">
+
+                                    <div class="bandera">
+                                        #{matchCalendarBean.getFlag(m.homeTeam)}
+                                    </div>
+
+                                    <div class="nombre-equipo">
+                                        #{matchCalendarBean.getCountry(m.homeTeam)}
+                                    </div>
+
+                                </div>
+
+                                <!-- ================= CENTRO ================= -->
+
+                                <div class="centro">
+
+                                    <h:panelGroup rendered="#{m.status == 'FINALIZADO'}">
+
+                                        <div class="resultado">
+
+                                            #{m.homeGoals} - #{m.awayGoals}
+
+                                        </div>
+
+                                    </h:panelGroup>
+
+                                    <h:panelGroup rendered="#{m.status != 'FINALIZADO'}">
+
+                                        <div class="vs">
+
+                                            VS
+
+                                        </div>
+
+                                    </h:panelGroup>
+
+                                    <div class="fecha">
+
+                                        📅 #{m.displayDate}
+
+                                    </div>
+
+                                    <div class="estado">
+
+                                        #{m.status}
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ================= VISITANTE ================= -->
+
+                                <div class="equipo">
+
+                                    <div class="bandera">
+
+                                        #{matchCalendarBean.getFlag(m.awayTeam)}
+
+                                    </div>
+
+                                    <div class="nombre-equipo">
+
+                                        #{matchCalendarBean.getCountry(m.awayTeam)}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </c:forEach>
+
+                    </div>
+
+                </p:tab>
+
+            </c:forEach>
+
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>

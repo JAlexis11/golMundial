@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
+        <title>UTN GolMundial 2026</title>
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0"/>
+
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@300;400;600;700&amp;display=swap"
+              rel="stylesheet"/>
+
+        <h:outputStylesheet library="css"
+                            name="estilos.css"/>
+
+        <h:outputStylesheet library="css"
+                            name="layout.css"/>
+
+    </h:head>
+
+    <h:body class="fondo-imagen">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="menu-superior">
+
+            <!-- Logo -->
+
+            <div class="logo-menu">
+
+                <h:graphicImage
+                    library="images"
+                    name="balon-m.png"
+                    styleClass="logo"/>
+
+                <div>
+
+                    <span class="titulo-logo">
+                        UTN GolMundial
+                    </span>
+
+                    <div class="subtitulo-logo">
+                        Copa Mundial 2026
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Menú -->
+
+            <nav class="opciones-menu">
+
+                <p:button
+                    icon="pi pi-home"
+                    value="Inicio"
+                    outcome="/home.xhtml"/>
+
+                <p:button
+                    icon="pi pi-calendar"
+                    value="Calendario"
+                    outcome="/calendar.xhtml"/>
+
+                <p:button
+                    icon="pi pi-chart-bar"
+                    value="Grupos"
+                    outcome="/standings.xhtml"/>
+
+                <p:button
+                    icon="pi pi-flag"
+                    value="Predicciones"
+                    outcome="/predictions.xhtml"/>
+
+                <p:button
+                    icon="pi pi-wallet"
+                    value="Wallet"
+                    outcome="/wallet.xhtml"/>
+
+                <p:button
+                    icon="pi pi-trophy"
+                    value="Ranking"
+                    outcome="/ranking.xhtml"/>
+
+            </nav>
+
+            <!-- Usuario -->
+
+            <div class="usuario-menu">
+
+                <h:panelGroup rendered="#{loginBean.authenticated}">
+                    👤 #{loginBean.authenticatedUser.fullName}
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{loginBean.guest}">
+                    👤 Invitado
+                </h:panelGroup>
+
+            </div>
+
+        </header>
+
+        <!-- ================= CONTENIDO ================= -->
+
+        <main class="contenido">
+
+            <ui:insert name="contenido"/>
+
+        </main>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            © 2026 UTN GolMundial | Ingeniería de Software
+
+        </footer>
+
+    </h:body>
+
+</ui:composition>

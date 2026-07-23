@@ -1,0 +1,26 @@
+# Maven
+target/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.war
+*.jar
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+nbproject/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

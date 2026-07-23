@@ -1,0 +1,222 @@
+:root{
+    --verde-cancha: #0b3d20;
+    --verde-claro: #1e7a3c;
+    --dorado: #f4c542;
+    --azul-cielo: #146b8c;
+    --blanco: #ffffff;
+    --texto-claro: #eaf3ea;
+}
+body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;   
+}
+.tarjeta-mundial{
+    background: var(--blanco);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    padding: 30px;
+    width: 380px;
+    margin:60px auto;
+}
+.tarjeta-mundial .titulo {
+    color: var(--verde-cancha);
+    text-align: center;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+}
+/* Fondo verde cancha, para páginas completas */
+.fondo-cancha {
+    background: linear-gradient(135deg, var(--verde-cancha), var(--verde-claro));
+    min-height: 100vh;
+}
+.fondo-imagen {
+    position: relative;
+    min-height: 100vh;
+     background-image: linear-gradient(rgba(10,15,20,0.6), rgba(10,15,20,0.75)),
+                       url('/FrontendAdministrativo-1.0-SNAPSHOT/resources/images/fondo-mundial.jpg');
+    background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* Botón principal dorado */
+.boton-dorado .ui-button {
+    background: var(--dorado) !important;
+    color: var(--verde-cancha) !important;
+    border: none !important;
+    font-weight: bold !important;
+}
+.boton-dorado .ui-button:hover {
+    background: #e0b32e !important;
+}
+/* Enlaces sobre fondo oscuro */
+.enlace-claro a {
+    color: var(--dorado);
+    font-weight: bold;
+}
+/* Tarjetas del menú principal (home) */
+.tarjeta-modulo {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.15s;
+}
+.tarjeta-modulo:hover {
+    transform: translateY(-4px);
+}
+.fila-podio {
+    background: linear-gradient(90deg, rgba(244,197,66,0.15), transparent);
+    font-weight: bold;
+}
+.fondo-ranking {
+    background: linear-gradient(160deg, #0b1f3a, #142d52);
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+.panel-ranking {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+.subtitulo-ranking {
+    color: var(--dorado);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+}
+.titulo-ranking {
+    color: #ffffff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6em;
+    letter-spacing: 3px;
+    margin-top: 4px;
+    margin-bottom: 35px;
+}
+.grid-ranking {
+    columns: 2;
+    column-gap: 40px;
+    text-align: left;
+}
+.fila-ranking {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 4px;
+    break-inside: avoid;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.numero-ranking {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--dorado);
+    color: var(--verde-cancha);
+    font-weight: bold;
+    font-size: 0.8em;
+    flex-shrink: 0;
+}
+.usuario-ranking {
+    font-weight: 600;
+}
+.saldo-ranking {
+    margin-left: auto;
+    color: var(--dorado);
+    font-weight: bold;
+    font-size: 0.95em;
+}
+.fondo-standings {
+    background: linear-gradient(160deg, #0b1f3a, #142d52);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+.panel-standings {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.titulo-standings {
+    color: #ffffff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4em;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.tabla-standings .ui-datatable-tablewrapper table {
+    background: rgba(255,255,255,0.03);
+}
+.tabla-standings th {
+    background: rgba(244,197,66,0.15) !important;
+    color: var(--dorado) !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700 !important;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+.tabla-standings td {
+    color: #eaf3ea !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+.equipo-nombre {
+    font-weight: 600;
+}
+.puntos-destacado {
+    color: var(--dorado);
+    font-weight: bold;
+}
+.fondo-calendar {
+    background: linear-gradient(160deg, #0b1f3a, #142d52);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+.panel-calendar {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.titulo-calendar {
+    color: #ffffff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4em;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.fila-partido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 10px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.equipo-partido {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 40%;
+}
+.equipo-partido.visitante {
+    justify-content: flex-end;
+    text-align: right;
+}
+.marcador-partido {
+    color: var(--dorado);
+    font-weight: bold;
+    font-size: 1.1em;
+    min-width: 60px;
+    text-align: center;
+}
+.info-partido {
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    margin-top: 2px;
+}

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>UTN GolMundial 2026 - Log In</title>
+    <h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body class="fondo-imagen">
+    <h:form id="loginForm">
+        <p:growl id="mensajes" showDetail="true" />
+        <div class="tarjeta-mundial">
+            <div class="titulo">
+               <h:graphicImage library="images" name="balon.jpg" style="height:28px; vertical-align:middle; margin-right:8px;" />
+               UTN GolMundial 2026 </div>
+            <h:panelGrid columns="1" style="width:100%">
+                <p:outputLabel for="username" value="Nombre de Usuario" />
+                <p:inputText id="username" value="#{loginBean.username}" required="true"
+                             requiredMessage="El nombre de usuario es obligatorio" style="width:100%" />
+                <p:outputLabel for="password" value="Contraseña" />
+                <p:password id="password" value="#{loginBean.password}" required="true"
+                            requiredMessage="La contraseña es obligatoria." feedback="false" style="width:100%" />
+                <div class="boton-dorado" style="margin-top:15px">
+                    <p:commandButton value="Ingresar" action="#{loginBean.login}"
+                                      update="mensajes" ajax="true" style="width:100%" />
+                </div>
+                <p:commandButton
+    id="btnInvitado"
+    value="Continuar como Invitado"
+    action="#{loginBean.enterAsGuest}"
+    ajax="false"
+    immediate="true"
+    process="@this"
+    styleClass="ui-button-secondary"
+    style="width:100%; margin-top:8px"/>
+                <h:panelGroup style="text-align:center; margin-top:15px; display:block" styleClass="enlace-claro">
+                    <h:outputText value="¿No tienes cuenta? " style="color:#555" />
+                    <h:link outcome="/register.xhtml" value="Regístrate aquí" />
+                </h:panelGroup>
+            </h:panelGrid>
+        </div>
+    </h:form>
+</h:body>
+</html>

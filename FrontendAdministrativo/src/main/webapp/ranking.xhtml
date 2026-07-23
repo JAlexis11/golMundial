@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="jakarta.faces.facelets">
+
+    <ui:define name="contenido">
+
+        <h1 class="titulo-pagina">
+            🏆 Ranking General
+        </h1>
+
+        <div class="ranking-card">
+
+            <h:form>
+
+                <p:dataTable
+                    value="#{rankingBean.ranking}"
+                    var="r"
+                    emptyMessage="No existen datos.">
+
+                    <p:column headerText="Posición">
+                        #{rankingBean.ranking.indexOf(r)+1}
+                    </p:column>
+
+                    <p:column headerText="Usuario">
+                        #{r.usuarioId}
+                    </p:column>
+
+                    <p:column headerText="Saldo">
+                        #{r.saldo} UTNGolCoin
+                    </p:column>
+
+                    <p:column headerText="Aciertos">
+                        #{r.aciertos}
+                    </p:column>
+
+                    <p:column headerText="Predicciones">
+                        #{r.totalPredicciones}
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

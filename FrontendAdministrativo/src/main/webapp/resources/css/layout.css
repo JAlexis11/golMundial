@@ -1,0 +1,1030 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.menu-superior{
+
+    width:100%;
+    background:rgba(5,18,35,.92);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 4px 15px rgba(0,0,0,.35);
+}
+
+.logo-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo{
+    width:70px;
+    height:70px;
+}
+
+.titulo-logo{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    color:white;
+
+    font-size:34px;
+
+    letter-spacing:2px;
+
+}
+
+.subtitulo-logo{
+
+    color:#f4c542;
+
+    font-size:13px;
+
+    font-family:'Inter',sans-serif;
+
+}
+
+.opciones-menu{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.opciones-menu .ui-button{
+
+    background:#0b3d20 !important;
+
+    color:white !important;
+
+    border:none !important;
+
+    border-radius:10px !important;
+
+    font-weight:bold !important;
+
+    transition:.30s;
+
+    height:42px;
+
+}
+
+.opciones-menu .ui-button:hover{
+
+    background:#f4c542 !important;
+
+    color:#0b3d20 !important;
+
+    transform:translateY(-2px);
+
+}
+
+.contenido{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:30px;
+
+    min-height:80vh;
+
+}
+
+.footer{
+
+    background:#081423;
+
+    color:white;
+
+    text-align:center;
+
+    padding:18px;
+
+    font-size:14px;
+
+    font-family:'Inter',sans-serif;
+
+    margin-top:40px;
+
+}
+/*================ HOME =================*/
+
+.home-banner{
+
+    background:rgba(255,255,255,.93);
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    margin-bottom:35px;
+
+}
+
+.home-banner h1{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    color:#0b3d20;
+
+    font-size:48px;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+}
+
+.home-banner h2{
+
+    color:#f4c542;
+
+    margin-bottom:10px;
+
+    font-family:'Inter',sans-serif;
+
+}
+
+.home-banner p{
+
+    color:#444;
+
+    font-size:17px;
+
+}
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.card-dashboard{
+
+    height:140px !important;
+
+    font-size:20px !important;
+
+    font-weight:bold !important;
+
+    border:none !important;
+
+    border-radius:20px !important;
+
+    background:white !important;
+
+    color:#0b3d20 !important;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    transition:.30s;
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px);
+
+    background:#f4c542 !important;
+
+}
+
+.salir{
+
+    background:#d9534f !important;
+
+    color:white !important;
+
+}
+
+.salir:hover{
+
+    background:#b52b27 !important;
+
+}
+.modulo{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+    min-height:250px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+}
+
+.modulo:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.icono{
+
+    font-size:50px;
+
+    margin-bottom:10px;
+
+}
+
+.modulo h3{
+
+    color:#0b3d20;
+
+    font-size:28px;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    margin-bottom:10px;
+
+}
+
+.modulo p{
+
+    color:#555;
+
+    font-size:15px;
+
+    line-height:1.5;
+
+}
+
+.btn-modulo{
+
+    width:100% !important;
+
+    background:#0b3d20 !important;
+
+    border:none !important;
+
+    color:white !important;
+
+    font-weight:bold !important;
+
+    border-radius:10px !important;
+
+}
+
+.btn-modulo:hover{
+
+    background:#f4c542 !important;
+
+    color:#0b3d20 !important;
+
+}
+
+.salir-card{
+
+    background:#d9534f;
+
+}
+
+.salir-card h3,
+
+.salir-card p{
+
+    color:white;
+
+}
+
+.btn-salir{
+
+    width:100% !important;
+
+    background:white !important;
+
+    color:#d9534f !important;
+
+    border:none !important;
+
+    font-weight:bold !important;
+
+}
+.usuario-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    margin-left:20px;
+
+    white-space:nowrap;
+
+}
+.titulo-pagina{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:30px;
+
+    font-family:'Bebas Neue',sans-serif;
+
+}
+
+.contenedor-partidos{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.card-partido{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+.card-partido:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.equipo{
+
+    width:35%;
+
+    text-align:center;
+
+}
+
+.bandera{
+
+    font-size:40px;
+
+}
+
+.nombre-equipo{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+.centro{
+
+    width:30%;
+
+    text-align:center;
+
+}
+
+.vs{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#0b3d20;
+
+}
+
+.resultado{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#0b3d20;
+
+}
+
+.fecha{
+
+    margin-top:10px;
+
+    color:#666;
+
+}
+
+.estado{
+
+    margin-top:8px;
+
+    background:#f4c542;
+
+    color:#0b3d20;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    display:inline-block;
+
+    font-weight:bold;
+
+}
+/*======================
+        RANKING
+=======================*/
+
+.ranking-contenedor{
+
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+
+}
+
+.ranking-card{
+
+    background:white;
+    border-radius:18px;
+    padding:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+.ranking-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.ranking-posicion{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#0b3d20;
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+    font-weight:bold;
+
+}
+
+.ranking-usuario{
+
+    flex:1;
+
+    margin-left:25px;
+
+}
+
+.ranking-usuario h2{
+
+    margin:0;
+
+    color:#0b3d20;
+
+    font-size:24px;
+
+}
+
+.ranking-usuario p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+.ranking-saldo{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#f4c542;
+
+}
+/*=====================
+        WALLET
+======================*/
+
+.wallet-card{
+
+    width:700px;
+
+    margin:auto;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    background:linear-gradient(135deg,#0b3d20,#157347);
+
+    color:white;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.wallet-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+
+    top:-180px;
+
+    right:-120px;
+
+}
+
+.wallet-card::after{
+
+    content:"💳";
+
+    position:absolute;
+
+    top:25px;
+
+    right:35px;
+
+    font-size:75px;
+
+    opacity:.18;
+
+}
+
+.wallet-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.wallet-title{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+.wallet-subtitle{
+
+    margin-top:8px;
+
+    color:#ddd;
+
+}
+
+.wallet-icon{
+
+    font-size:60px;
+
+}
+
+.wallet-saldo{
+
+    margin-top:50px;
+
+}
+
+.wallet-saldo span{
+
+    color:#ddd;
+
+}
+
+.wallet-saldo h2{
+
+    font-size:48px;
+
+    margin-top:12px;
+
+    color:#f4c542;
+
+}
+
+.wallet-footer{
+
+    margin-top:60px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+.wallet-footer span{
+
+    color:#ddd;
+
+}
+
+.wallet-footer h3{
+
+    margin-top:8px;
+
+}
+/*========================
+      HISTORIAL
+=========================*/
+
+.historial-card{
+
+    width:700px;
+
+    margin:35px auto;
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.titulo-historial{
+
+    color:#0b3d20;
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+}
+
+.movimiento{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:#f8f9fa;
+
+    margin-bottom:15px;
+
+    transition:.25s;
+
+}
+
+.movimiento:hover{
+
+    background:#eef6ef;
+
+}
+
+.movimiento-icono{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:#0b3d20;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+}
+
+.movimiento-texto{
+
+    flex:1;
+
+    margin-left:20px;
+
+}
+
+.movimiento-texto strong{
+
+    color:#222;
+
+    font-size:19px;
+
+}
+
+.movimiento-texto p{
+
+    margin-top:5px;
+
+    color:#666;
+
+}
+
+.movimiento-valor{
+
+    color:#16a34a;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.movimiento-estado{
+
+    background:#198754;
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+/*=========================
+      PREDICCIONES
+=========================*/
+
+.prediccion-card{
+
+    width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.prediccion-titulo{
+
+    text-align:center;
+
+    color:#0b3d20;
+
+    margin-bottom:25px;
+
+}
+
+.form-prediccion{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+.campo label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+    color:#0b3d20;
+
+}
+
+.btn-prediccion{
+
+    background:#0b3d20 !important;
+
+    border:none !important;
+
+    color:white !important;
+
+    font-size:18px !important;
+
+    padding:12px 30px !important;
+
+    border-radius:10px !important;
+
+}
+
+.btn-prediccion:hover{
+
+    background:#f4c542 !important;
+
+    color:#0b3d20 !important;
+
+}
+
+.tabla-predicciones{
+
+    width:90%;
+
+    margin:40px auto;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.estado-ganada{
+
+    background:#198754;
+
+    color:white;
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+
+.estado-perdida{
+
+    background:#dc3545;
+
+    color:white;
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+
+.estado-pendiente{
+
+    background:#f4c542;
+
+    color:#0b3d20;
+
+    padding:6px 15px;
+
+    border-radius:20px;
+
+    font-weight:bold;
+
+}
+/*==========================
+      STANDINGS
+===========================*/
+
+.tabla-posiciones{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+    margin-top:20px;
+
+}
+
+.tabla-posiciones .ui-datatable table{
+
+    width:100%;
+
+}
+
+.tabla-posiciones .ui-datatable thead th{
+
+    background:#0b3d20 !important;
+
+    color:white !important;
+
+    text-align:center;
+
+}
+
+.tabla-posiciones .ui-datatable tbody td{
+
+    text-align:center;
+
+}
+
+.tabla-posiciones .ui-datatable tbody tr:hover{
+
+    background:#f8f8f8;
+
+}
+
+.puntos{
+
+    background:#f4c542;
+
+    color:#0b3d20;
+
+    padding:5px 12px;
+
+    border-radius:15px;
+
+    font-weight:bold;
+
+}

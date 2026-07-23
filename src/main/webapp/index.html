@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Estadísticas – GolMundial 2026</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; padding: 20px; }
+        h1 { color: #003366; }
+        .card { background: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+        pre { background: #eee; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<h1>Demo del Backend de Estadísticas</h1>
+
+<div class="card">
+    <h2>Calendario del torneo</h2>
+    <button onclick="cargarCalendario()">Ver calendario</button>
+    <pre id="calendario"></pre>
+</div>
+
+<div class="card">
+    <h2>Posiciones por grupo</h2>
+    <button onclick="cargarPosiciones()">Ver posiciones</button>
+    <pre id="posiciones"></pre>
+</div>
+
+<div class="card">
+    <h2>Estadísticas por selección</h2>
+    <input id="sel" placeholder="ID selección">
+    <button onclick="cargarStats()">Ver estadísticas</button>
+    <pre id="stats"></pre>
+</div>
+
+<div class="card">
+    <h2>Login administrador</h2>
+    <p>Crear/actualizar/eliminar partidos requiere un token de un usuario con rol ADMINISTRADOR.</p>
+    <input id="loginEmail" placeholder="Email" value="admin2@utn.edu">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="login()">Iniciar sesión</button>
+    <pre id="loginResultado"></pre>
+</div>
+
+<div class="card">
+    <h2>Crear / actualizar partido</h2>
+    <p>Para actualizar, completá también "ID partido". Para crear, dejalo vacío.</p>
+    <div>
+        <input id="pIdPartido" placeholder="ID partido (solo para actualizar)">
+    </div>
+    <div>
+        <input id="pSeleccionLocal" placeholder="ID selección local">
+        <input id="pSeleccionVisitante" placeholder="ID selección visitante">
+        <input id="pSede" placeholder="ID sede">
+    </div>
+    <div>
+        <input id="pFecha" type="datetime-local">
+        <select id="pFase">
+            <option value="Grupo">Grupo</option>
+            <option value="Octavos">Octavos</option>
+            <option value="Cuartos">Cuartos</option>
+            <option value="Semifinal">Semifinal</option>
+            <option value="Final">Final</option>
+        </select>
+    </div>
+    <button onclick="guardarPartido()">Crear</button>
+    <button onclick="guardarPartido(true)">Actualizar</button>
+    <pre id="partidoResultado"></pre>
+</div>
+
+<div class="card">
+    <h2>Eliminar partido</h2>
+    <input id="pIdEliminar" placeholder="ID partido">
+    <button onclick="eliminarPartido()">Eliminar</button>
+    <pre id="eliminarResultado"></pre>
+</div>
+
+<script>
+const BASE = "http://localhost:8080/estadisticas";
+let token = null;
+
+function cargarCalendario() {
+    fetch(`${BASE}/api/partidos`)
+        .then(r => r.json())
+        .then(data => document.getElementById("calendario").textContent = JSON.stringify(data, null, 2));
+}
+
+function cargarPosiciones() {
+    fetch(`${BASE}/api/estadisticas`)
+        .then(r => r.json())
+        .then(data => document.getElementById("posiciones").textContent = JSON.stringify(data, null, 2));
+}
+
+function cargarStats() {
+    const id = document.getElementById("sel").value;
+    fetch(`${BASE}/api/selecciones/${id}/estadisticas`)
+        .then(r => r.json())
+        .then(data => document.getElementById("stats").textContent = JSON.stringify(data, null, 2));
+}
+
+function login() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    fetch(`${BASE}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+        .then(r => r.json())
+        .then(data => {
+            token = data.token || null;
+            document.getElementById("loginResultado").textContent = JSON.stringify(data, null, 2);
+        });
+}
+
+function guardarPartido(esActualizar) {
+    if (!token) {
+        document.getElementById("partidoResultado").textContent = "Primero iniciá sesión como administrador.";
+        return;
+    }
+    const idPartido = document.getElementById("pIdPartido").value;
+    const body = {
+        seleccionLocal: { idSeleccion: Number(document.getElementById("pSeleccionLocal").value) },
+        seleccionVisitante: { idSeleccion: Number(document.getElementById("pSeleccionVisitante").value) },
+        sede: { idSede: Number(document.getElementById("pSede").value) },
+        fecha: document.getElementById("pFecha").value,
+        fase: document.getElementById("pFase").value
+    };
+    if (esActualizar) {
+        body.idPartido = Number(idPartido);
+    }
+    fetch(`${BASE}/api/partidos`, {
+        method: esActualizar ? "PUT" : "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+        .then(r => r.text())
+        .then(texto => {
+            document.getElementById("partidoResultado").textContent =
+                `${esActualizar ? "Actualizado" : "Creado"} (status ok). ${texto}`;
+            cargarCalendario();
+        })
+        .catch(err => document.getElementById("partidoResultado").textContent = "Error: " + err);
+}
+
+function eliminarPartido() {
+    if (!token) {
+        document.getElementById("eliminarResultado").textContent = "Primero iniciá sesión como administrador.";
+        return;
+    }
+    const id = document.getElementById("pIdEliminar").value;
+    fetch(`${BASE}/api/partidos/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+    })
+        .then(r => {
+            document.getElementById("eliminarResultado").textContent = r.ok ? "Eliminado." : `Error (status ${r.status})`;
+            cargarCalendario();
+        });
+}
+</script>
+
+</body>
+</html>

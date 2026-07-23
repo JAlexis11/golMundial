@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>UTN GolMundial 2026 - Register</title>
+    <h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body class="fondo-imagen">
+
+    <h:form id="registerForm">
+        <p:growl id="mensajes" showDetail="true" />
+
+        <div class="tarjeta-mundial">
+            <div class="titulo">
+               <h:graphicImage library="images" name="balon.jpg" style="height:28px; vertical-align:middle; margin-right:8px;" />
+               Crea tu cuenta </div>
+
+            <h:panelGrid columns="1" style="width:100%">
+
+                <p:outputLabel value="Nombre de Usuario" />
+                <p:inputText value="#{registerBean.username}" required="true" style="width:100%" />
+
+                <p:outputLabel value="Email" />
+                <p:inputText value="#{registerBean.email}" required="true" style="width:100%" />
+
+                <p:outputLabel value="Nombre Completo" />
+                <p:inputText value="#{registerBean.fullName}" required="true" style="width:100%" />
+
+                <p:outputLabel value="Contraseña" />
+                <p:password value="#{registerBean.password}" required="true" feedback="true" style="width:100%" />
+
+                <p:outputLabel value="Confirmar contraseña" />
+                <p:password value="#{registerBean.confirmPassword}" required="true" feedback="false" style="width:100%" />
+
+                <div class="boton-dorado" style="margin-top:15px">
+                    <p:commandButton value="Inscribirse" action="#{registerBean.register}"
+                                      update="mensajes" style="width:100%" />
+                </div>
+
+                <h:panelGroup style="text-align:center; margin-top:10px; display:block" styleClass="enlace-claro">
+                    <h:link outcome="/login.xhtml" value="¿Ya tienes una cuenta? Inicia sesión." />
+                </h:panelGroup>
+
+            </h:panelGrid>
+        </div>
+    </h:form>
+
+</h:body>
+</html>

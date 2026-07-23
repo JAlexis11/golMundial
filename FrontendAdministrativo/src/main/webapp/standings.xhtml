@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<ui:composition
+    template="/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:c="jakarta.tags.core">
+
+    <ui:define name="contenido">
+
+        <h1 class="titulo-pagina">
+            📊 Tabla de Posiciones
+        </h1>
+
+        <p:tabView>
+
+            <c:forEach items="#{standingsBean.groupKeys}" var="grupo">
+
+                <p:tab title="Grupo #{grupo}">
+
+                    <div class="tabla-posiciones">
+
+                        <p:dataTable
+                                value="#{standingsBean.getSortedStandings(grupo)}"
+                                var="s"
+                                rowIndexVar="i">
+
+                            <p:column headerText="#">
+                                #{i+1}
+                            </p:column>
+
+                            <p:column headerText="Equipo">
+
+                                <strong>
+
+                                    #{s.team}
+
+                                </strong>
+
+                            </p:column>
+
+                            <p:column headerText="PJ">
+                                #{s.played}
+                            </p:column>
+
+                            <p:column headerText="G">
+                                #{s.won}
+                            </p:column>
+
+                            <p:column headerText="E">
+                                #{s.drawn}
+                            </p:column>
+
+                            <p:column headerText="P">
+                                #{s.lost}
+                            </p:column>
+
+                            <p:column headerText="GF">
+                                #{s.goalsFor}
+                            </p:column>
+
+                            <p:column headerText="GC">
+                                #{s.goalsAgainst}
+                            </p:column>
+
+                            <p:column headerText="DG">
+                                #{s.goalDifference}
+                            </p:column>
+
+                            <p:column headerText="PTS">
+
+                                <span class="puntos">
+
+                                    #{s.points}
+
+                                </span>
+
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </div>
+
+                </p:tab>
+
+            </c:forEach>
+
+        </p:tabView>
+
+    </ui:define>
+
+</ui:composition>
