@@ -39,6 +39,10 @@ public class SeleccionService {
     }
 
     public void crear(Seleccion seleccion) {
+        // El front puede mandar idSeleccion (ej. 0, o un id viejo de un form reciclado):
+        // con GenerationType.IDENTITY, persist() exige id nulo o Hibernate lo trata
+        // como entidad "detached" y tira EJBTransactionRolledbackException.
+        seleccion.setIdSeleccion(null);
         seleccion.setGrupo(resolverGrupo(seleccion.getGrupo()));
         seleccionRepository.crear(seleccion);
         auditoriaService.registrar("seleccion", seleccion.getIdSeleccion(), "CREAR", usuarioActual.getIdUsuarioOrNull());
